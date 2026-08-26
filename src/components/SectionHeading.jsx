@@ -9,7 +9,7 @@ export default function SectionHeading({
   const alignClass = alignment === "center" ? "items-center text-center" : "items-start text-left";
   
   return (
-    <div className={`flex flex-col ${alignClass} mb-16`}>
+    <div className={`flex flex-col ${alignClass} mb-4`}>
       {subtitle && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}

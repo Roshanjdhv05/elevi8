@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "../components/SectionHeading";
 import { Lightbulb, Layout, Code, Smartphone, Zap, MessagesSquare, Scaling, ShieldCheck } from "lucide-react";
@@ -14,8 +15,17 @@ const reasons = [
 ];
 
 export default function WhyElevi8() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % reasons.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="py-32 bg-white relative border-b border-gray-200">
+    <section className="py-16 bg-white relative border-b border-gray-200">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
@@ -26,7 +36,46 @@ export default function WhyElevi8() {
           alignment="center"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+        {/* Mobile Slider */}
+        <div className="md:hidden overflow-hidden relative mt-6 -mx-4 px-4 pb-8">
+          <motion.div 
+            className="flex"
+            animate={{ x: `-${currentIndex * 100}%` }}
+            transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+          >
+            {reasons.map((reason, index) => {
+              const Icon = reason.icon;
+              return (
+                <div key={reason.title} className="min-w-full px-2 h-full">
+                  <div className="bg-gray-100/40 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 h-full">
+                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 text-brand-blue">
+                      <Icon size={24} />
+                    </div>
+                    <h3 className="text-xl font-bold text-navy mb-3">{reason.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{reason.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+          
+          {/* Pagination Dots */}
+          <div className="flex justify-center gap-2 mt-6 flex-wrap">
+            {reasons.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  currentIndex === idx ? "bg-brand-blue w-5" : "bg-gray-300"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
           {reasons.map((reason, index) => {
             const Icon = reason.icon;
             return (
@@ -36,7 +85,7 @@ export default function WhyElevi8() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-gray-100/40 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 hover:bg-gray-100 hover:border-brand-blue/30 transition-all duration-300 group"
+                className="bg-gray-100/40 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 hover:bg-gray-100 hover:border-brand-blue/30 transition-all duration-300 group h-full"
               >
                 <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-navy text-brand-blue transition-colors duration-300">
                   <Icon size={24} />

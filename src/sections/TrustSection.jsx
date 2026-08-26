@@ -4,11 +4,11 @@ import siteConfig from "../config/site.config";
 
 export default function TrustSection() {
   return (
-    <section className="py-24 bg-gray-200 border-y border-gray-200 relative overflow-hidden">
+    <section className="py-12 bg-gray-200 border-y border-gray-200 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.05)_0%,transparent_100%)] pointer-events-none" />
       
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24 mb-16">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-16 mb-6">
           <div className="flex-1">
             <motion.h2 
               initial={{ opacity: 0, x: -20 }}

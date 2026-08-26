@@ -11,8 +11,8 @@ export default function TechSection() {
   const row2 = technologies.filter((_, i) => i % 2 !== 0);
 
   return (
-    <section className="py-24 bg-gray-200 overflow-hidden border-b border-gray-200">
-      <div className="container mx-auto px-6 max-w-7xl text-center mb-16">
+    <section className="py-12 bg-gray-200 overflow-hidden border-b border-gray-200">
+      <div className="container mx-auto px-6 max-w-7xl text-center mb-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

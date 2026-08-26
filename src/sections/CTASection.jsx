@@ -3,7 +3,7 @@ import Button from "../components/Button";
 
 export default function CTASection() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden">
       <div className="absolute inset-0 bg-brand-blue/5" />
       
       <div className="container mx-auto px-6 max-w-5xl relative z-10">

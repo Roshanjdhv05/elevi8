@@ -10,9 +10,9 @@ export default function FeaturedWork() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <section className="py-32 bg-gray-200 relative border-t border-gray-200">
+    <section className="py-16 bg-gray-200 relative border-t border-gray-200">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 gap-8">
           <SectionHeading 
             title="FEATURED WORK" 
             subtitle="Portfolio" 

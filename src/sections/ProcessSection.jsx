@@ -31,14 +31,14 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="py-32 bg-white relative border-b border-gray-200 overflow-hidden">
+    <section className="py-16 bg-white relative border-b border-gray-200 overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <SectionHeading 
           title="HOW WE BUILD" 
           subtitle="Our Process" 
           alignment="center" 
         />
-        <div className="relative mt-24">
+        <div className="relative mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-6 relative z-10">
             {steps.map((step, index) => (
               <motion.div
